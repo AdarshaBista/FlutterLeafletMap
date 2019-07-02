@@ -136,12 +136,8 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
                       color: Colors.white,
                     ),
               ),
-            ],
-          ),
-          if (location.isHotelVisible)
-            for (int i = 0; i < hotels.length; ++i)
-              MarkerLayerOptions(
-                markers: [
+              if (location.isHotelVisible)
+                for (int i = 0; i < hotels.length; ++i)
                   Marker(
                     width: 64.0,
                     height: 64.0,
@@ -151,8 +147,8 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
                           color: Colors.white,
                         ),
                   ),
-                ],
-              ),
+            ],
+          ),
           if (location.isRouteVisible)
             PolylineLayerOptions(
               polylines: [
@@ -170,7 +166,7 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
                   point: locations[0].latlng,
                   color: Colors.blue.withOpacity(0.7),
                   useRadiusInMeter: true,
-                  radius: 800, // 2000 meters | 2 km
+                  radius: 800,
                 ),
               ],
             ),
