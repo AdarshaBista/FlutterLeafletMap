@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_leaflet_map/providers/location_provider.dart';
 import 'package:flutter_leaflet_map/data/data.dart';
 
 import 'package:flutter_leaflet_map/widgets/location_card.dart';
@@ -35,56 +33,14 @@ class MainScreen extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: <Widget>[
-            LocationCard(0, locations[0]),
-            LocationCard(1, locations[1]),
-            LocationCard(2, locations[2]),
-            LocationCard(3, locations[3]),
-            LocationCard(4, locations[4]),
+            for (int i = 0; i < locations.length; ++i) LocationCard(i, locations[i]),
           ],
         ),
       );
 
   @override
   Widget build(BuildContext context) {
-    final LocationProvider location = Provider.of<LocationProvider>(context);
-
     return Scaffold(
-      drawer: Drawer(
-        child: Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: Column(
-            children: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  location.toggleHotelVisibility();
-                },
-                child: Text(
-                  "Hotels",
-                  style: Theme.of(context).textTheme.title,
-                ),
-              ),
-              FlatButton(
-                onPressed: () {
-                  location.toggleRouteVisibility();
-                },
-                child: Text(
-                  "Routes",
-                  style: Theme.of(context).textTheme.title,
-                ),
-              ),
-              FlatButton(
-                onPressed: () {
-                  location.toggleAreaVisibility();
-                },
-                child: Text(
-                  "Areas",
-                  style: Theme.of(context).textTheme.title,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
       backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0.0,
