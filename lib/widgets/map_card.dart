@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_leaflet_map/providers/location_provider.dart';
 import 'package:flutter_leaflet_map/data/data.dart';
+import 'package:flutter_leaflet_map/api_keys.dart';
 
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -120,8 +121,7 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
             urlTemplate: "https://api.tiles.mapbox.com/v4/"
                 "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
             additionalOptions: {
-              'accessToken':
-                  'pk.eyJ1IjoiYWRyc2h6ZXJvIiwiYSI6ImNqdzJjZ3J6eDAxbW80Ym93cXUyenVkM2EifQ.6HRuGgAgE_by5ikDiv7aOw',
+              'accessToken': MAPBOX_ACCESS_TOKEN,
               'id': 'mapbox.dark',
             },
           ),
