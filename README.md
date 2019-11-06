@@ -4,4 +4,4 @@ Basic implementation of the [flutter\_map](https://pub.dev/packages/flutter_map)
 
 ## Screenshots
 
-<img height="480px" src="screenshots/1.png"><img height="480px" src="screenshots/2.png">
+<img height="480px" src="screenshots/1.png"> <img height="480px" src="screenshots/2.png">
