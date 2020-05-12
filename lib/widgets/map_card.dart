@@ -76,16 +76,20 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
 
   void _animateMapTo(LatLng destLocation) {
     final destZoom = 15.0;
-    final _latTween = Tween<double>(begin: _mapController.center.latitude, end: destLocation.latitude);
-    final _lngTween = Tween<double>(begin: _mapController.center.longitude, end: destLocation.longitude);
+    final _latTween =
+        Tween<double>(begin: _mapController.center.latitude, end: destLocation.latitude);
+    final _lngTween =
+        Tween<double>(begin: _mapController.center.longitude, end: destLocation.longitude);
     final _zoomTween = Tween<double>(begin: _mapController.zoom, end: destZoom);
 
-    AnimationController animController = AnimationController(duration: const Duration(milliseconds: 800), vsync: this);
-    Animation<double> animation = CurvedAnimation(parent: animController, curve: Curves.fastOutSlowIn);
+    AnimationController animController =
+        AnimationController(duration: const Duration(milliseconds: 800), vsync: this);
+    Animation<double> animation =
+        CurvedAnimation(parent: animController, curve: Curves.fastOutSlowIn);
 
     animController.addListener(() {
-      _mapController.move(
-          LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)), _zoomTween.evaluate(animation));
+      _mapController.move(LatLng(_latTween.evaluate(animation), _lngTween.evaluate(animation)),
+          _zoomTween.evaluate(animation));
     });
 
     animation.addStatusListener((status) {
@@ -113,16 +117,20 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
         mapController: _mapController,
         options: MapOptions(
           zoom: 12.0,
-          center: LatLng(location.currentLocation.latlng.latitude, location.currentLocation.latlng.longitude),
+          center: LatLng(
+              location.currentLocation.latlng.latitude, location.currentLocation.latlng.longitude),
         ),
         layers: [
           TileLayerOptions(
+            tileProvider: NetworkTileProvider(),
             keepBuffer: 8,
-            urlTemplate: "https://api.tiles.mapbox.com/v4/"
-                "{id}/{z}/{x}/{y}@2x.png?access_token={accessToken}",
+            tileSize: 512,
+            zoomOffset: -1,
+            urlTemplate:
+                "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token={accessToken}",
             additionalOptions: {
               'accessToken': MAPBOX_ACCESS_TOKEN,
-              'id': 'mapbox.dark',
+              'id': 'mapbox/dark-v10',
             },
           ),
           MarkerLayerOptions(
@@ -130,11 +138,12 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
               Marker(
                 width: 64.0,
                 height: 64.0,
-                point: LatLng(location.currentLocation.latlng.latitude, location.currentLocation.latlng.longitude),
+                point: LatLng(location.currentLocation.latlng.latitude,
+                    location.currentLocation.latlng.longitude),
                 builder: (BuildContext context) => Icon(
-                      Icons.location_on,
-                      color: Colors.white,
-                    ),
+                  Icons.location_on,
+                  color: Colors.white,
+                ),
               ),
               if (location.isHotelVisible)
                 for (int i = 0; i < hotels.length; ++i)
@@ -143,9 +152,9 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
                     height: 64.0,
                     point: LatLng(hotels[i].latlng.latitude, hotels[i].latlng.longitude),
                     builder: (BuildContext context) => Icon(
-                          Icons.hotel,
-                          color: Colors.white,
-                        ),
+                      Icons.hotel,
+                      color: Colors.white,
+                    ),
                   ),
             ],
           ),

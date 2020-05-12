@@ -42,17 +42,17 @@ class LocationCard extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       _location.name,
-                      style: Theme.of(context).textTheme.headline,
+                      style: Theme.of(context).textTheme.headline5,
                       overflow: TextOverflow.ellipsis,
                     ),
                     Text(
                       "Lat: ${_location.latlng.latitude}",
-                      style: Theme.of(context).textTheme.subhead,
+                      style: Theme.of(context).textTheme.subtitle1,
                       overflow: TextOverflow.clip,
                     ),
                     Text(
                       "Lng: ${_location.latlng.longitude}",
-                      style: Theme.of(context).textTheme.subhead,
+                      style: Theme.of(context).textTheme.subtitle1,
                       overflow: TextOverflow.clip,
                     ),
                   ],

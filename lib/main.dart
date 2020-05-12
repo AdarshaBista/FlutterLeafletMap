@@ -21,17 +21,17 @@ class LeafletMap extends StatelessWidget {
             color: Colors.black,
           ),
           textTheme: TextTheme(
-            title: TextStyle(
+            headline6: TextStyle(
               color: Colors.black,
               fontSize: 22.0,
               fontWeight: FontWeight.bold,
             ),
-            headline: TextStyle(
+            headline5: TextStyle(
               color: Colors.white,
               fontSize: 16.0,
               fontStyle: FontStyle.normal,
             ),
-            subhead: TextStyle(
+            subtitle1: TextStyle(
               color: Colors.grey,
               fontSize: 14.0,
               fontStyle: FontStyle.italic,

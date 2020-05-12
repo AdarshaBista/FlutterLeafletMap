@@ -24,7 +24,7 @@ class MainScreen extends StatelessWidget {
         padding: EdgeInsets.all(8.0),
         child: Text(
           "My Places",
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
         ),
       );
 
@@ -47,7 +47,7 @@ class MainScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         title: Text(
           "Flutter Map",
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
         ),
         centerTitle: true,
       ),
