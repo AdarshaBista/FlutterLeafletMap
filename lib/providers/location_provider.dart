@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_leaflet_map/models/location.dart';
+
 import 'package:flutter_leaflet_map/data/data.dart';
+import 'package:flutter_leaflet_map/models/location.dart';
 
 class LocationProvider extends ChangeNotifier {
   Location _currentLocation = locations[0];

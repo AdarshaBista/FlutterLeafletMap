@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_leaflet_map/data/data.dart';
 
-import 'package:flutter_leaflet_map/widgets/location_card.dart';
 import 'package:flutter_leaflet_map/widgets/map_card.dart';
+import 'package:flutter_leaflet_map/widgets/location_card.dart';
 
 class MainScreen extends StatelessWidget {
   Widget _buildMap() => Flexible(

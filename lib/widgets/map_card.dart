@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter_leaflet_map/providers/location_provider.dart';
-import 'package:flutter_leaflet_map/data/data.dart';
+
 import 'package:flutter_leaflet_map/api_keys.dart';
+import 'package:flutter_leaflet_map/data/data.dart';
 
-import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-
-import 'package:unicorndial/unicorndial.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class MapCard extends StatefulWidget {
   @override
@@ -25,51 +26,30 @@ class MapCardState extends State<MapCard> with TickerProviderStateMixin {
     _mapController = MapController();
   }
 
-  UnicornDialer _buildFab(BuildContext context, LocationProvider location) => UnicornDialer(
-        backgroundColor: Colors.black26,
-        parentButtonBackground: Theme.of(context).primaryColor,
-        orientation: UnicornOrientation.VERTICAL,
-        parentButton: Icon(Icons.layers),
-        finalButtonIcon: Icon(Icons.close),
-        childButtons: <UnicornButton>[
-          UnicornButton(
-            hasLabel: true,
-            labelText: "Hotels",
-            currentButton: FloatingActionButton(
-              heroTag: "hotels",
-              backgroundColor: Colors.deepPurple,
-              mini: true,
-              child: Icon(Icons.hotel),
-              onPressed: () {
-                location.toggleHotelVisibility();
-              },
-            ),
+  SpeedDial _buildFab(BuildContext context, LocationProvider location) => SpeedDial(
+        overlayOpacity: 0.0,
+        animatedIcon: AnimatedIcons.menu_close,
+        children: [
+          SpeedDialChild(
+            label: "Areas",
+            child: Icon(Icons.radio_button_unchecked),
+            backgroundColor: Colors.blue,
+            labelStyle: Theme.of(context).textTheme.subtitle1,
+            onTap: () => location.toggleAreaVisibility(),
           ),
-          UnicornButton(
-            hasLabel: true,
-            labelText: "Routes",
-            currentButton: FloatingActionButton(
-              heroTag: "routes",
-              backgroundColor: Colors.green,
-              mini: true,
-              child: Icon(Icons.subdirectory_arrow_left),
-              onPressed: () {
-                location.toggleRouteVisibility();
-              },
-            ),
+          SpeedDialChild(
+            label: "Routes",
+            child: Icon(Icons.subdirectory_arrow_left),
+            backgroundColor: Colors.green,
+            labelStyle: Theme.of(context).textTheme.subtitle1,
+            onTap: () => location.toggleRouteVisibility(),
           ),
-          UnicornButton(
-            hasLabel: true,
-            labelText: "Areas",
-            currentButton: FloatingActionButton(
-              heroTag: "areas",
-              backgroundColor: Colors.blue,
-              mini: true,
-              child: Icon(Icons.radio_button_unchecked),
-              onPressed: () {
-                location.toggleAreaVisibility();
-              },
-            ),
+          SpeedDialChild(
+            label: "Hotels",
+            child: Icon(Icons.hotel),
+            backgroundColor: Colors.deepPurple,
+            labelStyle: Theme.of(context).textTheme.subtitle1,
+            onTap: () => location.toggleHotelVisibility(),
           ),
         ],
       );

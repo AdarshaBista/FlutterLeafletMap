@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter_leaflet_map/providers/location_provider.dart';
-import 'package:flutter_leaflet_map/models/location.dart';
+
 import 'package:flutter_leaflet_map/data/data.dart';
+import 'package:flutter_leaflet_map/models/location.dart';
 
 class LocationCard extends StatelessWidget {
   final Location _location;
